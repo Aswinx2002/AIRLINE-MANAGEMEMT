@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block title %} Add Flight {% endblock %}
+
+{% block style %}
+<style>
+.form-box {
+    max-width: 600px; /* Adjust the max-width as needed */
+    margin: 0 auto; /* Center the form box horizontally */
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-box h3 {
+    color: orange;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-box .form-group {
+    margin-bottom: 15px;
+}
+
+.form-box .form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-box .form-group input,
+.form-box .form-group select,
+.form-box .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.form-box .form-group input[type="submit"],
+.form-box .form-group .btn-back {
+    background-color: #f2ad1a; /* Orange color */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px; /* Add margin to separate from form fields */
+}
+
+.form-box .form-group input[type="submit"]:hover,
+.form-box .form-group .btn-back:hover {
+    background-color: #cc5200; /* Darker orange for hover effect */
+}
+
+.form-box .form-group .btn-back {
+    background-color: #f2ad1a;
+    text-align: center;
+    display: block; /* Ensure it's displayed as block element */
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container mt-3">
+    <div class="form-box">
+        <h3>Add Flight</h3>
+        <form action="" method="post" enctype="multipart/form-data" novalidate>
+            {% csrf_token %}
+            <div class="form-group">
+                {{ add_flight_form.as_p }}
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn-back" value="Add Flight">
+            </div>
+            <div class="form-group">
+                <a href="{% url 'home' %}" class="btn-back">Back to Home</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
